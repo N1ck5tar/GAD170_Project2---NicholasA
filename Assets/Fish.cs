@@ -38,21 +38,47 @@ public class Fish : MonoBehaviour
     private void SelectFish()
     {
         #region Rarity
-        int r = Random.Range(1, 101);
+        int r = Random.Range(1, 101); // Random number used to determine the fish's rarity
 
-        if (r >= 1 && r <= 50) // common
+        if (r >= 1 && r <= 40) // Common 40%
         {
             rarityValue = 1.1f;
 
             rarity = "Common";
         }
 
-        
+        if (r >= 41 && r <= 70) // Uncommon 30%
+        {
+            rarityValue = 1.2f;
+
+            rarity = "Uncommon";
+        }
+
+        if (r >= 71 && r <= 85) // Rare 15%
+        {
+            rarityValue = 1.3f;
+
+            rarity = "Rare";
+        }
+
+        if (r >= 86 && r <= 95) // Epic 10%
+        {
+            rarityValue = 1.4f;
+
+            rarity = "Epic";
+        }
+
+        if (r >= 96 && r <= 100) // Legendary 5%
+        {
+            rarityValue = 1.5f;
+
+            rarity = "Legendary";
+        }
 
         #endregion
 
 
-        int i = Random.Range(1, 101);
+        int i = Random.Range(1, 101); // Random number used to determine the fish's species
 
         
         #region Cod
@@ -60,7 +86,7 @@ public class Fish : MonoBehaviour
         {
             species = "Cod"; // Set the type of fish
 
-            length = Random.Range(2, 5); // Makes the fish a random length
+            length = Random.Range(4, 11); // Makes the fish a random length
 
             rarityBase = Random.Range(20, 30); // Base Price
             rarityUpdated = rarityBase * rarityValue; // Increased price by Rarity
@@ -73,7 +99,7 @@ public class Fish : MonoBehaviour
         {
             species = "Salmon"; // Set the type of fish
 
-            length = Random.Range(2, 5); // Makes the fish a random length
+            length = Random.Range(4, 11); // Makes the fish a random length
 
             rarityBase = Random.Range(20, 30); // Base Price
             rarityUpdated = rarityBase * rarityValue; // Increased price by Rarity
@@ -86,7 +112,7 @@ public class Fish : MonoBehaviour
         {
             species = "Trout"; // Set the type of fish
 
-            length = Random.Range(2, 5); // Makes the fish a random length
+            length = Random.Range(4, 11); // Makes the fish a random length
 
             rarityBase = Random.Range(20, 30); // Base Price
             rarityUpdated = rarityBase * rarityValue; // Increased price by Rarity
@@ -99,9 +125,9 @@ public class Fish : MonoBehaviour
         {
             species = "Piranha"; // Set the type of fish
 
-            length = Random.Range(2, 5); // Makes the fish a random length
+            length = Random.Range(4, 11); // Makes the fish a random length
 
-            rarityBase = Random.Range(20, 30); // Base Price
+            rarityBase = Random.Range(21, 32); // Base Price
             rarityUpdated = rarityBase * rarityValue; // Increased price by Rarity
             value = (int)rarityUpdated; // Turn into an int
         }
@@ -112,9 +138,9 @@ public class Fish : MonoBehaviour
         {
             species = "Catfish"; // Set the type of fish
 
-            length = Random.Range(2, 5); // Makes the fish a random length
+            length = Random.Range(4, 11); // Makes the fish a random length
 
-            rarityBase = Random.Range(20, 30); // Base Price
+            rarityBase = Random.Range(21, 32); // Base Price
             rarityUpdated = rarityBase * rarityValue; // Increased price by Rarity
             value = (int)rarityUpdated; // Turn into an int
         }
@@ -125,9 +151,9 @@ public class Fish : MonoBehaviour
         {
             species = "Swordfish"; // Set the type of fish
 
-            length = Random.Range(2, 5); // Makes the fish a random length
+            length = Random.Range(4, 11); // Makes the fish a random length
 
-            rarityBase = Random.Range(20, 30); // Base Price
+            rarityBase = Random.Range(22, 34); // Base Price
             rarityUpdated = rarityBase * rarityValue; // Increased price by Rarity
             value = (int)rarityUpdated; // Turn into an int
         }
@@ -138,9 +164,9 @@ public class Fish : MonoBehaviour
         {
             species = "Bass"; // Set the type of fish
 
-            length = Random.Range(2, 5); // Makes the fish a random length
+            length = Random.Range(4, 11); // Makes the fish a random length
 
-            rarityBase = Random.Range(20, 30); // Base Price
+            rarityBase = Random.Range(22, 34); // Base Price
             rarityUpdated = rarityBase * rarityValue; // Increased price by Rarity
             value = (int)rarityUpdated; // Turn into an int
         }
@@ -151,9 +177,9 @@ public class Fish : MonoBehaviour
         {
             species = "Blobfish"; // Set the type of fish
 
-            length = Random.Range(2, 5); // Makes the fish a random length
+            length = Random.Range(4, 11); // Makes the fish a random length
 
-            rarityBase = Random.Range(20, 30); // Base Price
+            rarityBase = Random.Range(23, 36); // Base Price
             rarityUpdated = rarityBase * rarityValue; // Increased price by Rarity
             value = (int)rarityUpdated; // Turn into an int
         }
@@ -164,9 +190,9 @@ public class Fish : MonoBehaviour
         {
             species = "Pufferfish"; // Set the type of fish
 
-            length = Random.Range(2, 5); // Makes the fish a random length
+            length = Random.Range(4, 11); // Makes the fish a random length
 
-            rarityBase = Random.Range(20, 30); // Base Price
+            rarityBase = Random.Range(23, 36); // Base Price
             rarityUpdated = rarityBase * rarityValue; // Increased price by Rarity
             value = (int)rarityUpdated; // Turn into an int
         }
@@ -177,9 +203,9 @@ public class Fish : MonoBehaviour
         {
             species = "Clownfish"; // Set the type of fish
 
-            length = Random.Range(2, 5); // Makes the fish a random length
+            length = Random.Range(4, 11); // Makes the fish a random length
 
-            rarityBase = Random.Range(20, 30); // Base Price
+            rarityBase = Random.Range(25, 40); // Base Price
             rarityUpdated = rarityBase * rarityValue; // Increased price by Rarity
             value = (int)rarityUpdated; // Turn into an int
         }
@@ -190,9 +216,9 @@ public class Fish : MonoBehaviour
         {
             species = "Barracuda"; // Set the type of fish
 
-            length = Random.Range(2, 5); // Makes the fish a random length
+            length = Random.Range(4, 11); // Makes the fish a random length
 
-            rarityBase = Random.Range(20, 30); // Base Price
+            rarityBase = Random.Range(25, 40); // Base Price
             rarityUpdated = rarityBase * rarityValue; // Increased price by Rarity
             value = (int)rarityUpdated; // Turn into an int
         }
@@ -203,16 +229,15 @@ public class Fish : MonoBehaviour
         {
             species = "Anglerfish"; // Set the type of fish
 
-            length = Random.Range(2, 5); // Makes the fish a random length
+            length = Random.Range(4, 11); // Makes the fish a random length
 
-            rarityBase = Random.Range(20, 30); // Base Price
+            rarityBase = Random.Range(25, 40); // Base Price
             rarityUpdated = rarityBase * rarityValue; // Increased price by Rarity
             value = (int)rarityUpdated; // Turn into an int
         }
         #endregion
 
         Debug.Log("You Caught a " + species);
-
 
     }
 }
