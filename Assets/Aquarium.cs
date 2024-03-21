@@ -17,7 +17,7 @@ public class Aquarium : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W) && turnsRemaining > 0)
+        if (Input.GetKeyDown(KeyCode.Space) && turnsRemaining > 0)
         {
             Instantiate(fish);
         }
