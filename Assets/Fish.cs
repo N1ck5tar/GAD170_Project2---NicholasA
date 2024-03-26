@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Fish : MonoBehaviour
 {
@@ -15,13 +16,15 @@ public class Fish : MonoBehaviour
 
     public int value; // Fish value
 
-    public Aquarium aquarium;
+    //public bool releasedFish;
+
+    public Aquarium aquarium; // Reference to the Aquarium script
     
     void Start()
     {
-        aquarium = FindAnyObjectByType<Aquarium>();
+        aquarium = FindAnyObjectByType<Aquarium>(); // Finds the game object that has the 'Aquarium' script 
 
-        SelectFish();
+        SelectFish(); // Creates the fish when this script's object is spawned
     }
    
 
@@ -30,49 +33,57 @@ public class Fish : MonoBehaviour
 
             
     }
+        
+
+    public void ReleasedFish() // Used to destroy the fish
+    {
+        if(aquarium != null) // Checks to ensure reference is connected correctly
+        {
+            aquarium.RemoveFish(this); // Gets the current fish that will be removed (released) by the aquarium script
+        }
+
+        Destroy(gameObject); // Destroys the fish
+    }
 
 
-
-
-
-    private void SelectFish()
+    private void SelectFish() // Used to create the fish its rarity, species, length and value
     {
         #region Rarity
         int r = Random.Range(1, 101); // Random number used to determine the fish's rarity
 
         if (r >= 1 && r <= 40) // Common 40%
         {
-            rarityValue = 1.1f;
+            rarityValue = 1.1f; // 10% increase in value
 
-            rarity = "Common";
+            rarity = "Common"; // Sets the rarity to Common
         }
 
         if (r >= 41 && r <= 70) // Uncommon 30%
         {
-            rarityValue = 1.2f;
+            rarityValue = 1.2f; // 20% increase in value
 
-            rarity = "Uncommon";
+            rarity = "Uncommon"; // Sets the rarity to Uncommon
         }
 
         if (r >= 71 && r <= 85) // Rare 15%
         {
-            rarityValue = 1.3f;
+            rarityValue = 1.5f; // 50% increase in value
 
-            rarity = "Rare";
+            rarity = "Rare"; // Sets the rarity to Rare
         }
 
         if (r >= 86 && r <= 95) // Epic 10%
         {
-            rarityValue = 1.4f;
+            rarityValue = 1.6f; // 60% increase in value
 
-            rarity = "Epic";
+            rarity = "Epic"; // Sets the rarity to Epic
         }
 
         if (r >= 96 && r <= 100) // Legendary 5%
         {
-            rarityValue = 1.5f;
+            rarityValue = 2f; // 100% increase in value
 
-            rarity = "Legendary";
+            rarity = "Legendary"; // Sets the rarity to Legendary
         }
 
         #endregion
@@ -86,7 +97,7 @@ public class Fish : MonoBehaviour
         {
             species = "Cod"; // Set the type of fish
 
-            length = Random.Range(4, 11); // Makes the fish a random length
+            length = Random.Range(4, 9); // Makes the fish a random length
 
             rarityBase = Random.Range(20, 30); // Base Price
             rarityUpdated = rarityBase * rarityValue; // Increased price by Rarity
@@ -99,7 +110,7 @@ public class Fish : MonoBehaviour
         {
             species = "Salmon"; // Set the type of fish
 
-            length = Random.Range(4, 11); // Makes the fish a random length
+            length = Random.Range(4, 10); // Makes the fish a random length
 
             rarityBase = Random.Range(20, 30); // Base Price
             rarityUpdated = rarityBase * rarityValue; // Increased price by Rarity
@@ -112,7 +123,7 @@ public class Fish : MonoBehaviour
         {
             species = "Trout"; // Set the type of fish
 
-            length = Random.Range(4, 11); // Makes the fish a random length
+            length = Random.Range(4, 10); // Makes the fish a random length
 
             rarityBase = Random.Range(20, 30); // Base Price
             rarityUpdated = rarityBase * rarityValue; // Increased price by Rarity
@@ -138,7 +149,7 @@ public class Fish : MonoBehaviour
         {
             species = "Catfish"; // Set the type of fish
 
-            length = Random.Range(4, 11); // Makes the fish a random length
+            length = Random.Range(5, 11); // Makes the fish a random length
 
             rarityBase = Random.Range(21, 32); // Base Price
             rarityUpdated = rarityBase * rarityValue; // Increased price by Rarity
@@ -151,7 +162,7 @@ public class Fish : MonoBehaviour
         {
             species = "Swordfish"; // Set the type of fish
 
-            length = Random.Range(4, 11); // Makes the fish a random length
+            length = Random.Range(5, 11); // Makes the fish a random length
 
             rarityBase = Random.Range(22, 34); // Base Price
             rarityUpdated = rarityBase * rarityValue; // Increased price by Rarity
@@ -164,7 +175,7 @@ public class Fish : MonoBehaviour
         {
             species = "Bass"; // Set the type of fish
 
-            length = Random.Range(4, 11); // Makes the fish a random length
+            length = Random.Range(5, 11); // Makes the fish a random length
 
             rarityBase = Random.Range(22, 34); // Base Price
             rarityUpdated = rarityBase * rarityValue; // Increased price by Rarity
@@ -177,7 +188,7 @@ public class Fish : MonoBehaviour
         {
             species = "Blobfish"; // Set the type of fish
 
-            length = Random.Range(4, 11); // Makes the fish a random length
+            length = Random.Range(4, 12); // Makes the fish a random length
 
             rarityBase = Random.Range(23, 36); // Base Price
             rarityUpdated = rarityBase * rarityValue; // Increased price by Rarity
@@ -190,7 +201,7 @@ public class Fish : MonoBehaviour
         {
             species = "Pufferfish"; // Set the type of fish
 
-            length = Random.Range(4, 11); // Makes the fish a random length
+            length = Random.Range(4, 13); // Makes the fish a random length
 
             rarityBase = Random.Range(23, 36); // Base Price
             rarityUpdated = rarityBase * rarityValue; // Increased price by Rarity
@@ -199,13 +210,13 @@ public class Fish : MonoBehaviour
         #endregion
 
         #region Clownfish
-        if (i >= 89 && i <= 92) // 4% chance
+        if (i >= 89 && i <= 92) // 4% chance V
         {
             species = "Clownfish"; // Set the type of fish
 
-            length = Random.Range(4, 11); // Makes the fish a random length
+            length = Random.Range(2, 18); // Makes the fish a random length
 
-            rarityBase = Random.Range(25, 40); // Base Price
+            rarityBase = Random.Range(10, 80); // Base Price
             rarityUpdated = rarityBase * rarityValue; // Increased price by Rarity
             value = (int)rarityUpdated; // Turn into an int
         }
@@ -216,9 +227,9 @@ public class Fish : MonoBehaviour
         {
             species = "Barracuda"; // Set the type of fish
 
-            length = Random.Range(4, 11); // Makes the fish a random length
+            length = Random.Range(5, 14); // Makes the fish a random length
 
-            rarityBase = Random.Range(25, 40); // Base Price
+            rarityBase = Random.Range(30, 46); // Base Price
             rarityUpdated = rarityBase * rarityValue; // Increased price by Rarity
             value = (int)rarityUpdated; // Turn into an int
         }
@@ -229,15 +240,22 @@ public class Fish : MonoBehaviour
         {
             species = "Anglerfish"; // Set the type of fish
 
-            length = Random.Range(4, 11); // Makes the fish a random length
+            length = Random.Range(5, 14); // Makes the fish a random length
 
-            rarityBase = Random.Range(25, 40); // Base Price
+            rarityBase = Random.Range(30, 46); // Base Price
             rarityUpdated = rarityBase * rarityValue; // Increased price by Rarity
             value = (int)rarityUpdated; // Turn into an int
         }
         #endregion
 
-        Debug.Log("You Caught a " + species);
+        Debug.Log("You Caught a " + species); // rarity, length, value (order)
+
+
+        aquarium.currentFishName.text = aquarium.fishHolder.GetComponent<Fish>().species; // Gives the information of species to fishHolder
+        aquarium.currentFishValue.text = aquarium.fishHolder.GetComponent<Fish>().value.ToString("0"); // Gives the information of value to fishHolder
+        aquarium.currentFishRarity.text = aquarium.fishHolder.GetComponent<Fish>().rarity; // Gives the information of rarity to fishHolder
+        aquarium.currentFishLength.text = aquarium.fishHolder.GetComponent<Fish>().length.ToString("0"); // Gives the information of length to fishHolder
+
 
     }
 }
